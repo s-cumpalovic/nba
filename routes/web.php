@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\PlayersController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,3 +21,12 @@ Route::get('/',[TeamsController::class, 'index']);
 Route::get('/teams/{id}', [TeamsController::class, 'show'])->name('team-route');
 
 Route::get('/players/{id}', [PlayersController::class, 'show'])->name('player-route');
+
+
+Route::get('/register', [RegisterController::class, 'create']);
+Route::post('/register', [RegisterController::class, 'store']);
+
+Route::get('/logout', [LoginController::class, 'destroy']);
+
+Route::get('/login', [LoginController::class, 'create']);
+Route::post('/login', [LoginController::class, 'store']);

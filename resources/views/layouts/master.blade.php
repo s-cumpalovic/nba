@@ -22,16 +22,17 @@
     <link rel="stylesheet" href="{{ asset('css/team.css') }}">
   </head>
   <body>
-
 @include('partials.header')
+
+    @if(session('message'))
+        <div class="alert alert-success">
+          {{ session('message') }}
+        </div>
+    @endif
 
     <main role="main" class="mb-5 p-5">
 
-    <h1 class="mb-5 p-5 text-danger font-weight-bold font-italic bg-dark p-5">The greatest teams in NBA showcase
-        .
-        .<br><br><br>
-
-    </h1>
+    <h1 class="mb-5 p-5 text-danger font-weight-bold font-italic bg-dark p-5">The greatest teams in NBA showcase</h1>
 
       <!-- Wrap the rest of the page in another container to center all the content. -->
 
