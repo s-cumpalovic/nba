@@ -7,6 +7,12 @@ use App\Models\Player;
 
 class PlayersController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('must-login');
+    }
+
     public function show($id) {
 
         $player = Player::with('team')->find($id);

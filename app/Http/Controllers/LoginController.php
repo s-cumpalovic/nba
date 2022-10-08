@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest', ['except' => 'destroy']);
+
+    }
+
     public function create() {
 
         return view('auth.login');
@@ -23,7 +29,7 @@ class LoginController extends Controller
         if($success) {
             
             return redirect('/');
-            
+
         }else {
 
             return back()->withErrors([
