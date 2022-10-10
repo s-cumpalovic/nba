@@ -26,12 +26,11 @@ Route::get('/players/{id}', [PlayersController::class, 'show'])->name('player-ro
 
 Route::get('/register', [RegisterController::class, 'create']);
 Route::post('/register', [RegisterController::class, 'store']);
-
-Route::get('/logout', [LoginController::class, 'destroy']);
+Route::get('/login/{id}/', [RegisterController::class, 'update'])->name('user-verification');
 
 Route::get('/login', [LoginController::class, 'create']);
 Route::post('/login', [LoginController::class, 'store']);
+Route::get('/logout', [LoginController::class, 'destroy']);
 
-Route::post('/teams/{id}/comments', [CommentsController::class, 'store']);
+Route::post('/teams/{id}/comments', [CommentsController::class, 'store'])->middleware('hate.words');
 
-Route::get('/login/{id}/', [RegisterController::class, 'update'])->name('user-verification');
