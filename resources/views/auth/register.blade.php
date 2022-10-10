@@ -43,4 +43,9 @@
         <button type="submit" class="btn btn-primary">Register</button>
     </form>
 
+    <p class="mt-3 p-1 font italic">
+        Already have an account? 
+        <a href="/login">Click here to login</a>
+    </p>
+
 @endsection

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\CreateUserRequest;
+use App\Mail\MailVerification;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -14,12 +16,10 @@ class RegisterController extends Controller
     }
 
     public function create() {
-
         return view('auth.register');
     }
 
     public function store(CreateUserRequest $request) {
-
         $validated = $request->validated();
 
         $user = new User();
@@ -29,9 +29,21 @@ class RegisterController extends Controller
         $user->password = bcrypt($validated['password']);
 
         $user->save();
+
+        Mail::to($user->email)->send(new MailVerification($user));
+
+
+                
+        return redirect('/login');
+    }
+
+    public function update($id) {
+        $user = User::find($id);
+
+        $user->is_verified = true;
+
+        $user->save();
         
-        auth()->login($user);
-        
-        return redirect('/');
+        return view('auth.login', compact('user'));
     }
 }

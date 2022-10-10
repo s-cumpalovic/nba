@@ -16,7 +16,6 @@ class CommentsController extends Controller
     }
 
     public function store(CreateCommentRequest $request, $id) {
-
         Team::find($id)->addComment($request->validated()['content']);
 
         return redirect()->back();

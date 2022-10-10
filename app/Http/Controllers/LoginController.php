@@ -13,35 +13,41 @@ class LoginController extends Controller
     }
 
     public function create() {
-
         return view('auth.login');
     }
     
     public function store() {
-        
-        $success = auth()->attempt([
+        if(!auth()->attempt([
 
             'email' => request('email'),
             'password' => request('password')
 
-        ]);
+        ])) {
 
-        if($success) {
-            
+            return back()->withErrors([
+    
+                'message' => 'Wrong email and/or password, please try again'
+            ]);
+        }
+
+
+        if(auth()->user()->is_verified) {
             return redirect('/');
+        }
+        
 
-        }else {
+        if(! auth()->user()->is_verified) {
+            $this->destroy();
 
             return back()->withErrors([
 
-                'message' => 'Wrong email and/or password, please try again'
+                'message' => 'Please verify your account, email has been sent !'
             ]);
         }
     }
 
 
     public function destroy() {
-        
         auth()->logout();
     
         return redirect('/login');
