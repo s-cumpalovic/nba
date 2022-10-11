@@ -29,5 +29,3 @@ class Team extends Model
 
 }
 
-$teams = Team::all();
-return $teams->toArray();

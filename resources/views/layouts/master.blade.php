@@ -22,32 +22,34 @@
     <link rel="stylesheet" href="{{ asset('css/team.css') }}">
   </head>
   <body>
-@include('partials.header')
+<div class="bg-dark">
 
+  @include('partials.header')
+  
     @if(session('message'))
-        <div class="alert alert-success">
-          {{ session('message') }}
-        </div>
+    <div class="alert alert-success">
+      {{ session('message') }}
+    </div>
     @endif
-
+    
     <main role="main" class="mb-5 p-5">
+      
+    <h1 class="mb-5 p-5 text-danger font-weight-bold font-italic bg-warning p-5">The greatest teams in NBA showcase</h1>
 
-    <h1 class="mb-5 p-5 text-danger font-weight-bold font-italic bg-dark p-5">The greatest teams in NBA showcase</h1>
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+    
+    <div class="container marketing mb-5 p-3 bg-muted" >
 
-      <!-- Wrap the rest of the page in another container to center all the content. -->
-
-      <div class="container marketing mb-5 p-3" >
-
-        @yield('content')
-
-      </div><!-- /.container -->
-
-
-      <!-- FOOTER -->
-      @include('partials.footer')
-    </main>
-
-    <!-- Bootstrap core JavaScript
+      @yield('content')
+      
+    </div><!-- /.container -->
+    
+    
+    <!-- FOOTER -->
+    @include('partials.footer')
+  </main>
+  
+  <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -56,5 +58,7 @@
     <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="../../assets/js/vendor/holder.min.js"></script>
+  </div>
   </body>
-</html>
+  </html>
+  
