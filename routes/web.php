@@ -36,6 +36,8 @@ Route::get('/logout', [LoginController::class, 'destroy']);
 Route::post('/teams/{id}/comments', [CommentsController::class, 'store'])->middleware('hate.words');
 
 Route::get('/news', [NewsController::class, 'index']);
+Route::get('/news/publish/', [NewsController::class, 'create']);
 Route::get('/news/{id}', [NewsController::class, 'show'])->name('news-with-users');
 Route::get('/news/teams/{team}', [NewsController::class, 'index'])->name('teams-index');
+Route::post('/news', [NewsController::class, 'store']); 
 

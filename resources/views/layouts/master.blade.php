@@ -27,7 +27,7 @@
   @include('partials.header')
   
     @if(session('message'))
-    <div class="alert alert-success">
+    <div class="alert alert-warning text-dangerous">
       {{ session('message') }}
     </div>
     @endif
