@@ -16,6 +16,7 @@ class NewsController extends Controller
 
     public function index(Team $team) {
         $allnews = [];
+        
 
         if($team->id) {
             $allnews = $team->news()->orderBy('created_at', 'desc')->simplePaginate(5);

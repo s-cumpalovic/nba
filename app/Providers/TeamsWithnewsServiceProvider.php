@@ -2,17 +2,14 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use App\Models\News;
 use App\Models\Team;
 
 
-
-class AppServiceProvider extends ServiceProvider
+class TeamsWithnewsServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Register services.
      *
      * @return void
      */
@@ -22,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Bootstrap services.
      *
      * @return void
      */
@@ -33,6 +30,4 @@ class AppServiceProvider extends ServiceProvider
 
         view()->share('teamsWithNews', $value);
     }
-
 }
-

@@ -20,30 +20,37 @@
     <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/team.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
   </head>
   <body>
+
+    
 <div class="bg-dark">
 
   @include('partials.header')
-  
-    @if(session('message'))
-    <div class="alert alert-warning text-dangerous">
-      {{ session('message') }}
-    </div>
-    @endif
-    
-    <main role="main" class="mb-5 p-5">
-      
-    <h1 class="mb-5 p-5 text-danger font-weight-bold font-italic bg-warning p-5">The greatest teams in NBA showcase</h1>
 
+  
+  @if(session('message'))
+  <div class="alert alert-warning text-dangerous">
+    {{ session('message') }}
+  </div>
+  @endif
+  
+  
+  <main role="main" class="mb-5 p-5">
+    
+    <h1 class="mb-5 p-5 text-danger font-weight-bold font-italic bg-warning p-5">The greatest teams in NBA showcase</h1>
+    
     <!-- Wrap the rest of the page in another container to center all the content. -->
     
     <div class="container marketing mb-5 p-3 bg-muted" >
-
+      
       @yield('content')
       
     </div><!-- /.container -->
-
+    @if(auth()->user())
+    @include('partials.sidebar')
+    @endif
     
     <!-- FOOTER -->
     @include('partials.footer')
