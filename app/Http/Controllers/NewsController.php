@@ -4,13 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\News;
+use App\Models\Team;
 
 class NewsController extends Controller
 {
-    public function index() {
-        $allnews = News::with('user')->simplePaginate(5);
+    public function index(Team $team) {
+        $allnews = [];
 
-        return view('news.index', ['allnews' => $allnews]);
+        if($team->id) {
+            $allnews = $team->news()->simplePaginate(5);
+        }else {
+            $allnews = News::simplePaginate(5);
+        }
+
+        return view('news.index', compact('allnews'));
     }
 
     public function show($id) {

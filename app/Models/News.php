@@ -15,8 +15,9 @@ class News extends Model
         return $this->belongsTo(User::class);
     }
 
-    public static function paginated() {
-        return self::all()->paginate(10);
+    public function teams() {
+        return $this->belongsToMany(Team::class, 'news_team');
     }
+
 
 }

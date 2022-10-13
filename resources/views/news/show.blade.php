@@ -13,6 +13,12 @@
             <hr class="text-warning">
             <h4 class="mt-3 p-2 font-weight-bold font-italic text-danger">About user: {{ $news->user->name }}</h4>
             <hr class="text-warning">
+            <h4 class="mt-3 p-2 font-weight-bold font-italic text-danger">
+            @if(count($news->teams))
+                Including teams: {{ $news->teams[0]->name }}
+            @endif
+            </h4>
+            <hr class="text-warning">
     </div>
 
     <div class="table-responsive mt-5 p-3">

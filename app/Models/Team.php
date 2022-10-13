@@ -9,6 +9,10 @@ class Team extends Model
 {
     use HasFactory;
 
+    // public function getRouteKeyName() {
+    //     return 'name';
+    // }
+
     public function players() {
 
         return $this->hasMany(Player::class);
@@ -25,6 +29,10 @@ class Team extends Model
             'content' => $content,
             'user_id' => auth()->user()->id
             ]);
+    }
+
+    public function news() {
+        return $this->belongsToMany(News::class, 'news_team');
     }
 
 }
