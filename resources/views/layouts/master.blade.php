@@ -43,7 +43,7 @@
       @yield('content')
       
     </div><!-- /.container -->
-    
+
     
     <!-- FOOTER -->
     @include('partials.footer')
